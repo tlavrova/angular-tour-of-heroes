@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {Hero} from "../hero";
+import {HEROES} from "../mock-heroes";
 
 @Component({
   selector: 'app-heroes',
   styleUrls: ['./heroes.component.css'],
   template: `
-    <h2>{{hero.name}} Details</h2>
-    <div><span>id: </span>{{hero.id}}</div>
-    <div><span>name: </span>{{hero.name}}</div>
-    <div>
-      <label for="name">Hero name: </label>
-      <input id="name" [(ngModel)]="hero.name" placeholder="name">
-    </div>
+    <h2>My Heroes</h2>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes">
+        <button type="button">
+          <span class="badge">{{hero.id}}</span>
+          <span class="name">{{hero.name}}</span>
+        </button>
+      </li>
+    </ul>
   `
 })
 export class HeroesComponent implements OnInit {
 
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  }
+  heroes = HEROES
 
   constructor() { }
 
