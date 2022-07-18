@@ -15,6 +15,7 @@ import {Hero} from "../hero";
         </button>
       </li>
     </ul>
+    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
   `
 })
 export class HeroesComponent implements OnInit {
