@@ -22,6 +22,7 @@ import {HeroService} from "../hero.service";
           <span class="badge">{{hero.id}}</span>
           {{hero.name}}
         </a>
+        <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
       </li>
     </ul>
   `
@@ -47,5 +48,10 @@ export class HeroesComponent implements OnInit {
       .subscribe(hero => {
         this.heroes.push(hero);
       });
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
   }
 }
