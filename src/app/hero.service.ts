@@ -8,7 +8,7 @@ import {Hero} from "./hero";
 export class HeroService {
 
   constructor() { }
-  
+
   getHeroes(): Hero[] {
     return HEROES;
   }
