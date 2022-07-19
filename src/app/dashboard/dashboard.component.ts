@@ -12,6 +12,8 @@ import { HeroService } from '../hero.service';
         {{hero.name}}
       </a>
     </div>
+
+    <app-hero-search></app-hero-search>
   `
 })
 
