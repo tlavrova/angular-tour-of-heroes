@@ -8,7 +8,7 @@ import { HeroService } from '../hero.service';
   template: `
     <h2>Top Heroes</h2>
     <div class="heroes-menu">
-      <a *ngFor="let hero of heroes">
+      <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
         {{hero.name}}
       </a>
     </div>

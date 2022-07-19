@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero} from "../hero";
 import {HeroService} from "../hero.service";
-import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-heroes',
@@ -10,29 +9,22 @@ import {MessageService} from "../message.service";
     <h2>My Heroes</h2>
     <ul class="heroes">
       <li *ngFor="let hero of heroes">
-        <button type="button" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <a routerLink="/detail/{{hero.id}}">
           <span class="badge">{{hero.id}}</span>
-          <span class="name">{{hero.name}}</span>
-        </button>
+          {{hero.name}}
+        </a>
       </li>
     </ul>
-    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
   `
 })
 export class HeroesComponent implements OnInit {
 
   heroes: Hero[] = []
-  selectedHero?: Hero
 
-  constructor(private heroService: HeroService, private messageService: MessageService) { }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
     this.getHeroes()
-  }
-
-  onSelect(hero: Hero) {
-    this.selectedHero = hero
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`)
   }
 
   getHeroes() {
