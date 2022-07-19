@@ -16,6 +16,7 @@ import {Location} from "@angular/common";
         <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
       </div>
       <button type="button" (click)="goBack()">go back</button>
+      <button (click)="save()">save</button>
     </div>
   `
 })
@@ -39,5 +40,12 @@ export class HeroDetailComponent implements OnInit {
 
   goBack() {
     this.location.back()
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
   }
 }
